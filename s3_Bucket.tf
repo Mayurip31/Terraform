@@ -12,7 +12,7 @@ provider "aws" {
     region  = "us-east-1"
     
 }
-resource "aws_s3_bucket" "new" {
+resource "aws_s3_bucket" "example" {
   bucket = "webdata"
 
   tags = {
