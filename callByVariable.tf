@@ -50,7 +50,7 @@ variable "s3_bucket" {
   
 }
 
-variable "vpc.cidr" {
+variable "vpc_cidr" {
   default = "10.0.0.0/16"
   description = "vpc CIDR"
   
