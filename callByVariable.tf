@@ -22,12 +22,18 @@ resource "aws_instance" "server" {
 resource "aws_s3_bucket" "example" {
   bucket = var.s3_bucket
 
-  tags = var.tags
+  tags = {
+    "Name" = "MyBucket"
+  }
+
 }
 
 resource "aws_vpc" "main" {
   cidr_block       = var.vpc_cidr
-  tags = var.tags
+  
+  tags = {
+    "Name" ="My vpc" 
+  }
 }
 variable "ami_id" {
     default = "ami-0c7217cdde317cfec"
