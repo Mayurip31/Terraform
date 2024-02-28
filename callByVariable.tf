@@ -16,8 +16,12 @@ provider "aws" {
 resource "aws_instance" "server" {
   ami           = var.ami_id
   instance_type = var.type
+   
+   tags = {
+     "Name" ="mayuri" 
+   }
 
-  tags =var.tags
+
 }
 resource "aws_s3_bucket" "example" {
   bucket = var.s3_bucket
@@ -45,11 +49,6 @@ variable "type" {
   description = "Instance type"
 }
 
-variable "tags" {
-  default = "mayuri"
-  description = "For identification"
-  
-}
 
 variable "s3_bucket" {
   default = "hefklpo"
