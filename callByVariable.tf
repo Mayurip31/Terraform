@@ -17,12 +17,17 @@ resource "aws_instance" "server" {
   ami           = var.ami_id
   instance_type = var.type
 
-  tags = {
-    Name = "Mayuri"
-  }
+  tags =var.tags
+}
+resource "aws_s3_bucket" "example" {
+  bucket = var.s3_bucket
 
+  tags = var.tags
+}
 
-
+resource "aws_vpc" "main" {
+  cidr_block       = var.vpc.cidr
+  tags = var.tags
 }
 variable "ami_id" {
     default = "ami-0c7217cdde317cfec"
@@ -32,12 +37,25 @@ variable "ami_id" {
 variable "type" {
   default = "t2.micro"
   description = "Instance type"
+}
 
-
+variable "tags" {
+  default = "mayuri"
+  description = "For identification"
   
 }
 
+variable "s3_bucket" {
+  default = "hefklpo"
+  
+}
 
+variable "vpc.cidr" {
+  default = "10.0.0.0/16"
+  description = "vpc CIDR"
+  
+  
+}
 
 
 
